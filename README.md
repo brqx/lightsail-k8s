@@ -1,2 +1,2 @@
 # lightsail-k8s
-Kubernetes implementation - Ligthsail based - 2020 Farmacia Zaragoza
+Kubernetes implementation - Lightsail based - 2020 Farmacia Zaragoza
