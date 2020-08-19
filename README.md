@@ -1,5 +1,4 @@
-# lightsail-k8s
-LANGUAGES: English | Spànish
+# lightsail-k8s    - LANGUAGES: English | Spànish
 Kubernetes implementation - Lightsail based - 2020 Farmacia Zaragoza
 AWS Cloud Learning and Reinventing - Brqx 
 --------------------------------------------------------------------------------------------
