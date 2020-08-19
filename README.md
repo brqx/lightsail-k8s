@@ -1,14 +1,16 @@
 # lightsail-k8s
 Kubernetes implementation - Lightsail based - 2020 Farmacia Zaragoza
-AWS Cloud Learning and Reinventing - Brqx -  https://www.linkedin.com/in/brqxng/?locale=en_US
+AWS Cloud Learning and Reinventing - Brqx 
+--------------------------------------------------------------------------------------------
+https://www.linkedin.com/in/brqxng/?locale=en_US
 --------------------------------------------------------------------------------------------
 Site - https://brqx.es/en
-
-This project will be a fork of : 
+--------------------------------------------------------------------------------------------
+This project is a fork of : 
 
 https://github.com/mikegcoleman/lightsail-k8s/
 
-We have changed and tested code with current structure.
+We have changed and tested code with current structure and brqx style.
 
 This is a simple set of scripts to create a Kubernetes cluster on lightsail. 
 
