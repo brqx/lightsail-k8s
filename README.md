@@ -28,17 +28,31 @@ This is a simple set of scripts to create a Kubernetes cluster on lightsail.
 
         sudo chmod +x *.sh
 
-* Execute the script passing in the path to your Lightsail SSH key
+* Create Instances to use 
 
-        ./create-cluster.sh /path/to/your/lightsail.pem
+        ./create_instances.sh /path/to/your/lightsail.pem
+        
+        ./run_cluster.sh
 
-## What's Happening
+## Information
 
-The script first  provisions 3 Lightsail small instances (1GB RAM 1 vCPU $10 each / month), as part of the provisioning process it installs the latest versions of Docker, Kubectl, Kubeadm, and Kubelet.
+The script first  provisions 1 Lightsail medium instance (master) and two micro/nano instances for workers (1GB RAM 1 vCPU $10 each / month), as part of the provisioning process it installs the latest versions of Docker, Kubectl, Kubeadm, and Kubelet.
 
 It then installs Flannel for the pod networking. 
 
 Finally, it uses Kubeadm to create a master node, and after that's done it uses Kubeadm to add two workers. 
 
 This is, of course, not a production-ready setup, but is fine to get something up and running in the cloud to being experimenting with. 
+
+## Real description 
+
+What we do in this script is the following : 
+
+1. Generate instances
+2. Create kubernet cluster
+3. Add nodes
+
+This script have been tested in 2020 August with the lates version of kubect ( 18 ) and ubuntu 16 image (blueprint)
+
+
 
