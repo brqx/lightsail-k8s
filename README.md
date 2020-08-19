@@ -69,9 +69,13 @@ This script have been tested in 2020 August with the latest version of kubectl (
 ## Specific file information
 
 create_cluster.sh         --> Main file
+
 create_instances.sh       --> Generate the three lightsail instances
+
 run_cluster.sh            --> Generate Kubernetes cluster in lightsail instances
+
 delete_cluster.sh         --> Remove lightsail instances
+
 install_prereqs_ubuntu.sh --> Script what will update ubuntu instances to kubernetes needed
 
 Note: We have a method to generate these scripts preparing a fast debug step numbers to check problems inside instances
