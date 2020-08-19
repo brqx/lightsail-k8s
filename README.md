@@ -1,4 +1,5 @@
 # lightsail-k8s
+LANGUAGES: English | Spànish
 Kubernetes implementation - Lightsail based - 2020 Farmacia Zaragoza
 AWS Cloud Learning and Reinventing - Brqx 
 --------------------------------------------------------------------------------------------
@@ -18,7 +19,7 @@ This is a simple set of scripts to create a Kubernetes cluster on lightsail.
 
 * You need to have downloaded the default SSH key for your Lightsail instances.
 * Have fully setting of .aws/config file
-* The script uses the AWS cli to create the Lightsail instances, so you will need that installed and configured on your local machine. The instances will be created in whatever is configured as the default region for the CLI
+* The script uses the AWS cli to create the Lightsail instances, so you will need that installed and configured on your local machine. 
 * Have exported KEY (pem file) and KEYPAIRCREATE (pub file) to access to instance
 
 ## Usage
@@ -27,7 +28,7 @@ This is a simple set of scripts to create a Kubernetes cluster on lightsail.
 
         git clone https://github.com/brqx/lightsail-k8s
 
-* Chage into the repo directory
+* Enter into the repo directory
 
 * Make sure all the scripts are executable
 
@@ -80,4 +81,86 @@ install_prereqs_ubuntu.sh --> Script what will update ubuntu instances to kubern
 
 Note: We have a method to generate these scripts preparing a fast debug step numbers to check problems inside instances
 
+==============================================================================================================================
 
+# lightsail-k8s
+Implementación de Kubernetes - Basado en Lightsail - 2020 Farmacia Zaragoza
+Aprendizaje y reinvención en la nube de AWS - Brqx
+-------------------------------------------------- ------------------------------------------
+https://www.linkedin.com/in/brqxng/?locale=en_US
+-------------------------------------------------- ------------------------------------------
+Sitio - https://brqx.es/en
+-------------------------------------------------- ------------------------------------------
+Este proyecto es una bifurcación de:
+
+https://github.com/mikegcoleman/lightsail-k8s/
+
+Hemos cambiado y probado el código con la estructura actual y el estilo brqx.
+
+Este es un conjunto simple de scripts para crear un clúster de Kubernetes en Lightsail.
+
+# Requisitos previos
+
+* Debe haber descargado la clave SSH predeterminada para sus instancias de Lightsail.
+* Tener la configuración completa del archivo .aws / config
+* El script utiliza la cli de AWS para crear las instancias de Lightsail, por lo que necesitará instalarlo y configurarlo en su máquina local. 
+* Ha exportado KEY (archivo pem) y KEYPAIRCREATE (archivo pub) para acceder a la instancia
+
+## Uso
+
+* Clone este repositorio en su máquina local
+
+        git clone https://github.com/brqx/lightsail-k8s
+
+* Ingrese al directorio del repositorio
+
+* Asegúrese de que todos los scripts sean ejecutables
+
+        sudo chmod + x * .sh
+
+* Crear estructura
+
+        . ./create_cluster.sh
+        
+¿Por qué ejecutar un script con dot?
+
+En nuestro método para administrar scripts de Unix definimos funciones.
+
+Si ejecutamos un script con un punto, podríamos reutilizar estas funciones para probar el comportamiento de los scripts.
+
+## Información
+
+El script primero aprovisiona 1 instancia mediana de Lightsail para maestro ((4GB RAM 2 vCPU $ 20 al mes) y dos instancias micro / nano para trabajadores (1GB RAM 1 vCPU $ 10 cada / mes), como parte del proceso de aprovisionamiento, instala las últimas versiones de Docker, Kubectl, Kubeadm y Kubelet.
+
+Luego instala Flannel para la red de pod.
+
+Finalmente, usa Kubeadm para crear un nodo maestro, y una vez hecho esto, usa Kubeadm para agregar dos trabajadores.
+
+Esta, por supuesto, no es una configuración lista para producción, pero está bien para poner algo en funcionamiento en la nube para experimentar.
+
+Este script es completamente seguro para evitar desperdiciar dinero con las pruebas de AWS, una vez que se haya generado la estructura, esperará a que se presione la tecla para eliminar las instancias.
+
+## Descripción real
+
+Lo que hacemos en este script es lo siguiente:
+
+1. Genera instancias
+2. Crea un clúster de Kubernet
+3. Agregar nodos
+4. Mostrar información de clústeres y nodos
+
+Este script se probó en agosto de 2020 con la última versión de kubectl (18) y ubuntu 16 image (blueprint)
+
+## Información de archivo específica
+
+create_cluster.sh -> Archivo principal
+
+create_instances.sh -> Genera las tres instancias de Lightsail
+
+run_cluster.sh -> Generar clúster de Kubernetes en instancias de Lightsail
+
+delete_cluster.sh -> Eliminar instancias de Lightsail
+
+install_prereqs_ubuntu.sh -> Script que actualizará las instancias de ubuntu a kubernetes necesarios
+
+Nota: Tenemos un método para generar estos scripts preparando un número de pasos de depuración rápida para verificar problemas dentro de las instancias
